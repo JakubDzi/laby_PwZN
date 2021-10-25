@@ -12,6 +12,7 @@ parser.add_argument('number', help='ilość kroków symulacji', type=int)
 parser.add_argument('-u', '--upa', help='początkowa gęstość spinów w górę (dom. 0,5)', type=float, default=0.5)
 parser.add_argument('-f', '--file', help='nazwa pliku do zapisu (domyślnie step)', default="step")
 parser.add_argument('-mf', '--magfile', help='nazwa pliku do zapisu magnetyzacji co krok (tylko jeśli nazwa jest podana)', default="")
+parser.add_argument('-g', '--gifile', help='nazwa pliku do zapisu animacji (tylko jeśli nazwa jest podana)', default="")
 args = parser.parse_args()
 
 def hamilton(spins, jv, b):
@@ -30,7 +31,7 @@ def hamilton(spins, jv, b):
     return zwr
 
 class Sim:
-    def __init__(self, size, jvalue, beta, bfield, n, uparrow, file, magfile, hamilt):
+    def __init__(self, size, jvalue, beta, bfield, n, uparrow, file, magfile, hamilt, gifname):
         self.imgs=[]
         self.m=np.zeros(n)
         self.mgt=size**2
@@ -95,8 +96,9 @@ class Sim:
                 im=im.convert('RGB')
                 self.imgs.append(im)
                 im.save(self.file+str(int(step/(self.size**2)))+".jpg")
-        self.imgs[0].save(fp="film.gif", format='GIF', save_all=True, duration=0.1, loop=0, append_images=self.imgs)
+        if gifname != "":
+            self.imgs[0].save(fp=gifname+"gif", format='GIF', save_all=True, duration=0.1, loop=0, append_images=self.imgs)
 
 
 
-symulacja = Sim(args.size, args.jval, args.beta, args.bfld, args.number, args.upa, args.file, args.magfile, hamilton)
+symulacja = Sim(args.size, args.jval, args.beta, args.bfld, args.number, args.upa, args.file, args.magfile, hamilton, args.gifile)
