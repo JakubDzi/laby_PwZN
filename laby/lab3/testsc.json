@@ -1,0 +1,1 @@
+"div.find('img')['title'] = 'Mark Hamill'""div.find('a').text.strip() = 'Luke Skywalker'"
