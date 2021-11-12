@@ -56,7 +56,8 @@ class Sim:
         if magfile != "":
             self.mf=open(magfile+".txt", "w")
         h0 = hamilt(self.spins, self.j, self.b)
-        for step in track(range(self.n*(self.size**2))):
+        #for step in track(range(self.n*(self.size**2))):
+        for step in range(self.n * (self.size ** 2)):
             x = np.random.randint(self.size)
             y = np.random.randint(self.size)
             self.spins[(x, y)] *= -1
@@ -98,6 +99,6 @@ class Sim:
                 self.imgs.append(im)
                 im.save(self.file+str(int(step/(self.size**2)))+".jpg")
         if gifname != "":
-            self.imgs[0].save(fp=gifname+"gif", format='GIF', save_all=True, duration=0.1, loop=0, append_images=self.imgs)
+            self.imgs[0].save(fp=gifname+".gif", format='GIF', save_all=True, duration=0.1, loop=0, append_images=self.imgs)
 
 symulacja = Sim(args.size, args.jval, args.beta, args.bfld, args.number, args.upa, args.file, args.magfile, hamilton, args.gifile)
