@@ -17,7 +17,9 @@ def generate_data():
     histx, binsx = np.histogram(xs, bins=100, density=True)
     histy, binsy = np.histogram(ys, bins=100, density=True)
     bix = []
+    bux = []
     biy = []
+    buy = []
     for i in range(len(binsx)-1):
         bix.append((binsx[i]+binsx[i+1])/2)
     for i in range(len(binsy)-1):
@@ -58,10 +60,10 @@ f2.grid.visible = False
 g2 = f2.hex_tile(size = 0.01, source = binned_data, fill_color = cmap, line_color = None)
 
 f3 = figure(match_aspect = True)
-g3 = f3.circle('bx', 'hx', source = datax)
+g3 = f3.vbar(x = 'bx', top='hx', width = 0.01, source = datax)
 
 f4 = figure(match_aspect = True)
-g4 = f4.circle('by', 'hy', source = datay)
+g4 = f4.vbar(x = 'by', top = 'hy', width = 0.01, source = datay)
 
 l = layout([column(points_slider, scale_slider, scale_b_slider), row(f1, f2), row(f3, f4)], sizing_mode = 'stretch_width')
 
