@@ -10,7 +10,6 @@ import numpy as np
 n_points = 100000
 scale = 0.5
 scale_b = 0.5
-global g3, g4
 
 def generate_data():
     xs = np.random.normal(scale = scale, size = n_points)
