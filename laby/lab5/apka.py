@@ -17,9 +17,7 @@ def generate_data():
     histx, binsx = np.histogram(xs, bins=100, density=True)
     histy, binsy = np.histogram(ys, bins=100, density=True)
     bix = []
-    bux = []
     biy = []
-    buy = []
     for i in range(len(binsx)-1):
         bix.append((binsx[i]+binsx[i+1])/2)
     for i in range(len(binsy)-1):
