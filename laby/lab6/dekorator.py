@@ -1,5 +1,6 @@
 from time import time
 import numpy as np
+
 def dekorator_funkc(n = 1):
     def Inner(func):
         def wrapper(*args, **kwargs):
@@ -14,11 +15,10 @@ def dekorator_funkc(n = 1):
     return Inner
 
 def randommul(*args):
-    for i in args:
-        n = args[0]
+    n = args[0]
     a = np.random.random((n,n))
     b = np.random.random((n,n))
     c = np.multiply(a,b)
     #print(c)
 
-dekorator_funkc(10)(randommul)(1000)
+dekorator_funkc(10)(randommul)(5000)
