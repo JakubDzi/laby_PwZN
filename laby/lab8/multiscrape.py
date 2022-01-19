@@ -13,6 +13,7 @@ def improc(name):
     img = Image.open(name)
     imgGray = img.convert('L')
     imgGray.save(name)
+    print(name + " skonwertowany")
 
 if __name__=='__main__':
     req = requests.get('http://if.pw.edu.pl/~mrow/dyd/wdprir/')
