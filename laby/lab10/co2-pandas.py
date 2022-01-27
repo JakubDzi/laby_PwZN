@@ -23,5 +23,3 @@ plt.xlabel('rok')
 plt.ylabel('emisja CO2')
 plt.legend()
 plt.show()
-
-
